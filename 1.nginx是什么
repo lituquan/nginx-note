@@ -43,4 +43,29 @@
         quit — graceful shutdown
         reload — reloading the configuration file
         reopen — reopening the log files
-    nginx -s reload 热部署
+
+    nginx -h
+        nginx version: nginx/1.16.1
+        Usage: nginx [-?hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]
+
+        Options:
+        -?,-h         : this help
+        -v            : show version and exit
+        -V            : show version and configure options then exit
+        -t            : test configuration and exit
+        -T            : test configuration, dump it and exit
+        -q            : suppress non-error messages during configuration testing
+        -s signal     : send signal to a master process: stop, quit, reopen, reload
+        -p prefix     : set prefix path (default: NONE)
+        -c filename   : set configuration file (default: conf/nginx.conf)
+        -g directives : set global directives out of configuration file
+### 8. 重载、热部署、日志分割
+    nginx -s reload 重载【更新nginx.conf】
+    热部署【替换nginx二进制】
+        kill -user2
+        nginx -s reload 
+    日志分割
+        kill -user1
+        nginx -s reopen
+        reopen — reopening the log files        
+        https://blog.csdn.net/diyiday/article/details/86694576

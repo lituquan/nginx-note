@@ -4,7 +4,7 @@ https://www.cnblogs.com/1214804270hacker/p/9325150.html
 ### 1.http负载均衡
     https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/
 
-    upstream backend {
+    upstream backend { # backend是名字
         least_conn;  #负载均衡算法,默认:Round Robin ;部分算法可以设置Server Weights
         server backend1.example.com; #地址
         server backend2.example.com;

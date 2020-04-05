@@ -16,14 +16,20 @@
             }
         }
 #### 静态资源服务
-    root指向文件路径
+    https://www.cnblogs.com/kevingrace/p/6187482.html
+    root指向文件路径上级
+    alias替换路径
+
     server {
         location / {
             root /data/www;
         }
 
         location /images/ {
-            root /data;
+            root /data; # 文件为/data/image,/data 是/images 的上级
+        }
+        location /huan/ {
+            alias /home/www/huan/; # 访问http://域名/huan/a.html实际指定的是/home/www/huan/a.html。
         }
     }
 #### 反向代理服务
@@ -37,8 +43,18 @@
             root /data/images;
         }
     }
-
-### 2.开启缓存
+### 2.常用功能
+    打开gzip
+        gzip on 
+    打开目录浏览
+        autoindex on
+    控制访问速率
+        set $limit_rate 1k    
+    日志
+        log_format    
+        access_log
+        
+### 3.开启缓存
     https://blog.csdn.net/dengjiexian123/article/details/53386586
     https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/
 
@@ -52,3 +68,4 @@
             }
         }
     }       
+
