@@ -1,18 +1,46 @@
-1.nginx 是一个开源的web服务器
-    高性能
+### 1.nginx 是一个开源的web服务器
+    高性能、高并发、热部署 
+   
+    基于nginx的服务器：
+        nginx 
+        nginx plus 
+        tengine
+        openResty
 
-2.常用场景
+### 2.常用场景
     web服务器
     反向代理
     负载均衡
     统一访问入口
     api网关
 
-3.支持协议
+### 3.支持协议
     Web服务：http/https,websocket
     邮件协议：IMAP、POP3、SMTP
 
-4.高性能
+### 4.高性能
     (1)epoll多路复用
         select/epoll
     (2) master、worker进程模型   
+
+### 5.组成部分
+    (1)二进制可执行文件
+    (2)nginx.conf    
+    (3)access.log
+    (4)error.log
+
+
+### 6.命令模块
+    主模块命令，事件模块命令，HTTP核心模块命令
+        模块使用{}分开
+        指令使用;分开
+
+### 7.nginx 命令    
+
+    nginx -s signal
+    常用signal:
+        stop — fast shutdown
+        quit — graceful shutdown
+        reload — reloading the configuration file
+        reopen — reopening the log files
+    nginx -s reload 热部署

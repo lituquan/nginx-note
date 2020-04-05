@@ -1,3 +1,54 @@
-1.静态资源服务
+### 1.使用目标
+    http://nginx.org/en/docs/beginners_guide.html 
+    https://docs.nginx.com/nginx/admin-guide/web-server/web-server/
+#### http指令块：
+        server   # Setting Up Virtual Servers 描述一个虚拟服务
+        location [xx]   # 描述匹配规则，注意优先级 Location Priority        
 
-2.反向代理服务
+        http{                  
+            upstream{
+                
+            }
+            server{   # Setting Up Virtual Servers 描述一个虚拟服务
+                location [xx]{   # 描述匹配规则
+
+                }                
+            }
+        }
+#### 静态资源服务
+    root指向文件路径
+    server {
+        location / {
+            root /data/www;
+        }
+
+        location /images/ {
+            root /data;
+        }
+    }
+#### 反向代理服务
+    proxy_pass 指向对应的服务地址
+    server {
+        location / {
+            proxy_pass http://localhost:8080/;
+        }
+
+        location ~ \.(gif|jpg|png)$ {
+            root /data/images;
+        }
+    }
+
+### 2.开启缓存
+    https://blog.csdn.net/dengjiexian123/article/details/53386586
+    https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/
+
+    http {
+        ...
+        proxy_cache_path /data/nginx/cache keys_zone=one:10m; #所有server 缓存
+        server {
+            proxy_cache mycache; #server 级别缓存
+            location / {
+                proxy_pass http://localhost:8000;
+            }
+        }
+    }       

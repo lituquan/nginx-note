@@ -1,4 +1,25 @@
 https://www.cnblogs.com/mentalidade/p/10432344.html
+https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/
+
 1.生成证书
 
 2.证书加入配置
+
+    http {
+        ssl_session_cache   shared:SSL:10m;
+        ssl_session_timeout 10m;
+
+        server {
+            listen              443 ssl;
+            server_name         www.example.com;
+            keepalive_timeout   70;
+
+            ssl_certificate     www.example.com.crt;
+            ssl_certificate_key www.example.com.key;
+            ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+            ssl_ciphers         HIGH:!aNULL:!MD5;
+            #...
+        }
+    }
+3.nginx 访问控制
+    https://docs.nginx.com/nginx/admin-guide/security-controls/

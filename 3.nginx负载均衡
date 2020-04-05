@@ -1,8 +1,35 @@
 
 https://www.cnblogs.com/1214804270hacker/p/9325150.html
 
-1.加权轮询
+### 1.http负载均衡
+    https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/
 
-2.ip_hash
+    upstream backend {
+        least_conn;  #负载均衡算法,默认:Round Robin ;部分算法可以设置Server Weights
+        server backend1.example.com; #地址
+        server backend2.example.com;
+    }
+    算法：
+        Round Robin
+        hash( hash $request_uri consistent,用户设置的key)
+        ip_hash
+        Least Connections(least_conn)
+        random
+        Least Time (NGINX Plus only) 
 
-3.least_conn
+### 2.代理tcp/udp
+    https://blog.csdn.net/Activity_Time/article/details/95767390 [mysql]
+    https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/
+
+    算法：
+        round Robin
+        random 
+        hash
+
+### 3.健康检查
+    http:
+        https://docs.nginx.com/nginx/admin-guide/load-balancer/http-health-check/
+    tcp:
+        https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-health-check/
+    udp:
+        https://docs.nginx.com/nginx/admin-guide/load-balancer/udp-health-check/    
