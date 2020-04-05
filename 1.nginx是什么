@@ -1,0 +1,18 @@
+1.nginx 是一个开源的web服务器
+    高性能
+
+2.常用场景
+    web服务器
+    反向代理
+    负载均衡
+    统一访问入口
+    api网关
+
+3.支持协议
+    Web服务：http/https,websocket
+    邮件协议：IMAP、POP3、SMTP
+
+4.高性能
+    (1)epoll多路复用
+        select/epoll
+    (2) master、worker进程模型   
